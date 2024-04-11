@@ -13,6 +13,16 @@ const createActivity = async (name, description) => {
   }
 };
 
+const deleteActivity = async (id) => {
+  try{
+    const result = await client.query(`
+    DELETE FROM activities WHERE id = ${id}
+    `)
+  } catch(error){
+    console.log(error)
+  }
+}
+
 const getActivities = async () => {
   try{
     const activities = await client.query(`
@@ -27,5 +37,6 @@ const getActivities = async () => {
 
 module.exports = {
   createActivity,
-  getActivities
+  getActivities,
+  deleteActivity
 }

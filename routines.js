@@ -13,6 +13,16 @@ const createRoutine = async (name, is_public, goal) => {
   }
 };
 
+const deleteRoutine = async (id) => {
+  try{
+    const result = await client.query(`
+    DELETE FROM routines WHERE id = ${id}
+    `)
+  } catch(error){
+    console.log(error)
+  }
+}
+
 const getRoutines = async () => {
   try{
     const routines = await client.query(`
@@ -27,5 +37,6 @@ const getRoutines = async () => {
 
 module.exports = { 
   createRoutine,
-  getRoutines
+  getRoutines,
+  deleteRoutine
 };
