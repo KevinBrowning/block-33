@@ -2,10 +2,12 @@ const client = require('./client.js');
 
 const createActivity = async (name, description) => {
   try{
-    await client.query(`
+    const result = await client.query(`
     INSERT INTO activities (name, description)
-    VALUES ('${name}', '${description}');
+    VALUES ('${name}', '${description}')
+    RETURNING *;
     `)
+    return result;
   } catch(error){
     console.log(error);
   }
