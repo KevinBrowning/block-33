@@ -1,5 +1,5 @@
 const client = require('./client.js');
-const createRoutine = require('./routines.js');
+const { createRoutine } = require('./routines.js');
 const { createActivity } = require('./activities.js');
 const createRoutines_Activities = require('./routines_activities.js');
 

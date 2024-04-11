@@ -11,4 +11,19 @@ const createRoutine = async (name, is_public, goal) => {
   }
 };
 
-module.exports = createRoutine;
+const getRoutines = async () => {
+  try{
+    const routines = await client.query(`
+    SELECT * FROM routines
+    `);
+    console.log(routines.rows)
+    return routines.rows;
+  } catch(error) {
+    console.log(error);
+  }
+}
+
+module.exports = { 
+  createRoutine,
+  getRoutines
+};
